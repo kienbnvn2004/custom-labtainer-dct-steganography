@@ -1,0 +1,32 @@
+#
+# Labtainer Dockerfile
+#
+
+ARG registry
+FROM $registry/labtainer.network
+
+ARG lab
+ARG labdir
+ARG imagedir
+ARG user_name
+ARG password
+ARG apt_source
+
+RUN id -u $user_name >/dev/null 2>&1 || useradd -ms /bin/bash $user_name
+RUN echo "$user_name:$password" | chpasswd
+RUN adduser $user_name sudo || true
+
+USER $user_name
+ENV HOME /home/$user_name
+
+ADD $labdir/$imagedir/home_tar/home.tar $HOME
+RUN rm -f $HOME/home.tar
+ADD $labdir/$lab.tar.gz $HOME
+
+WORKDIR $HOME
+
+USER root
+
+#
+# DO NOT add below this line.
+#

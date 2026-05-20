@@ -1,0 +1,26 @@
+*.lab
+*.zip
+*.tar.gz
+*.pyc
+__pycache__/
+.tmp/
+*.log
+typescript
+
+# Runtime results
+original_video.json
+stego_video.json
+compressed_stego.json
+extracted_message.txt
+quality_result.txt
+answers.txt
+embed_result.txt
+compression_result.txt
+recovery_result.txt
+ac12_result.txt
+ac21_result.txt
+ac33_result.txt
+compare_result.txt
+
+# Labtainer output
+labtainer_xfer/
